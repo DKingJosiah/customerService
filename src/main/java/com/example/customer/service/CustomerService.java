@@ -2,6 +2,7 @@ package com.example.customer.service;
 
 import com.example.customer.dto.Response;
 import com.example.customer.entity.Customer;
+import com.example.customer.exception.CustomerNotFoundException;
 import com.example.customer.mapper.CustomerMapper;
 import com.example.customer.repository.CustomerRepository;
 import jakarta.validation.Valid;
@@ -26,21 +27,21 @@ public class CustomerService {
 
     public Response getCustomer(String externalId) {
         Customer customer = customerRepository.findByExternalId(externalId)
-                .orElseThrow(() -> new IllegalArgumentException("Customer not found"));
+                .orElseThrow(() -> new CustomerNotFoundException("Customer not found"));
         return customerMapper.toResponse(customer);
     }
 
 
     public Response updateCustomer(String externalId, @Valid Request request) {
         Customer customer = customerRepository.findByExternalId(externalId)
-                .orElseThrow(() -> new IllegalArgumentException("Customer not found"));
+                .orElseThrow(() -> new CustomerNotFoundException("Customer not found"));
         customerRepository.save(customer);
         return customerMapper.toResponse(customer);
     }
 
     public void deleteCustomer(String externalId) {
         Customer customer = customerRepository.findByExternalId(externalId)
-                .orElseThrow(() -> new IllegalArgumentException("Customer not found"));
+                .orElseThrow(() -> new CustomerNotFoundException("Customer not found"));
         customerRepository.delete(customer);
     }
 }
