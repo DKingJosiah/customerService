@@ -1,9 +1,8 @@
 package com.example.customer.mapper;
 
-import com.example.customer.dto.Request;
-import com.example.customer.dto.Response;
+import com.example.customer.dto.Request.CustomerRequest;
+import com.example.customer.dto.Response.CustomerResponse;
 import com.example.customer.entity.Customer;
-import jakarta.validation.Valid;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -21,8 +20,8 @@ public interface CustomerMapper {
     @Mapping(target = "address.city", source = "city")
     @Mapping(target = "address.state", source = "state")
     @Mapping(target = "address.lga", source = "lga")
-    Customer toEntity(Request request);
+    Customer toEntity(CustomerRequest customerRequest);
 
-    Response toResponse(Customer customer);
+    CustomerResponse toResponse(Customer customer);
 
 }

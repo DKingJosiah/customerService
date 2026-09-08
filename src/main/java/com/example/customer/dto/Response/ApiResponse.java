@@ -1,4 +1,6 @@
-package com.example.customer.dto;
+package com.example.customer.dto.Response;
+
+import com.example.customer.dto.ErrorDetail;
 
 import java.time.Instant;
 

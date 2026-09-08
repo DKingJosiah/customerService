@@ -1,4 +1,4 @@
-package com.example.customer.dto;
+package com.example.customer.dto.Response;
 
 
 import com.example.customer.entity.Address;
@@ -14,7 +14,7 @@ import java.time.Instant;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Response{
+public class CustomerResponse {
 
 
     private String email;
